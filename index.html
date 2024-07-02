@@ -139,38 +139,6 @@
       .project-info {
         padding: 15px;
       }
-      .chatbot {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        background-color: #f9f9f9;
-      }
-      .chat-messages {
-        height: 300px;
-        overflow-y: auto;
-        border: 1px solid #eee;
-        padding: 10px;
-        background-color: white;
-        margin-bottom: 10px;
-      }
-      .chat-input {
-        display: flex;
-      }
-      .chat-input input {
-        flex-grow: 1;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-      }
-      .chat-input button {
-        padding: 10px 20px;
-        background-color: #3f51b5;
-        color: white;
-        border: none;
-        border-radius: 3px;
-        margin-left: 10px;
-        cursor: pointer;
-      }
       #scrollToTopBtn {
         display: none; /* Hide button by default */
         position: fixed;
@@ -199,7 +167,7 @@
         background-color: #0056b3; /* Darker blue on hover */
       }
 
-      @media (max-width: 1024px) {
+      @media (max-width: 768px) {
         nav ul {
           flex-direction: column; /* Switch to a column layout */
           align-items: center; /* Center align items */
@@ -241,7 +209,6 @@
         <li><a href="#courses">Courses</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#chatbot">Chatbot</a></li>
         <li>
           <button id="toggleTheme" style="background: none; border: none; cursor: pointer; padding: 5px 10px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -438,22 +405,8 @@
       </div>
     </div>
   </div>
-      </div>
-      
-      <div id="chatbot" class="tab-content">
-        <h2>AI Chatbot</h2>
-        <div class="chatbot">
-          <div class="chat-messages">
-            <p><strong>AI:</strong> Hello! I'm the AI &amp; Software Lab's assistant. How can I help you today?</p>
-          </div>
-          <div class="chat-input">
-            <input type="text" placeholder="Type your message here...">
-            <button>Send</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
+</div>
+</div>
     <footer>
       <p>📍 서울특별시 서대문구 거북골로 34 명지대학교 인문캠퍼스 본관 0000 (우편번호 03674)</p>
       <p>📞 02-300-0000 </p>
