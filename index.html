@@ -1,0 +1,550 @@
+<html>
+  <head>
+    <title>AI &amp; Software Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+      body {
+        font-family: 'Bitter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0; /* Default background color */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+      }
+      .container {
+        margin: 0 auto;
+        padding: 20px;
+      }
+    .notice-box {
+      background-color: #e0f7fa; /* Light blue background */
+      color: #0066cc; /* Blue text color */
+      border: 1px solid #0066cc; /* Blue border */
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 1em;
+    }
+    .notice-box a {
+      color: #0066cc; /* Link color */
+      text-decoration: none;
+    }
+    .notice-box a:hover {
+      text-decoration: underline;
+    }
+
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+      }
+      header {
+        background-color: #1a237e;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+      h1 {
+        margin: 0;
+        font-size: 2.5em;
+      }
+      nav {
+        background-color: #3f51b5;
+        padding: 10px 0;
+      }
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        margin: 0 10px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      nav ul li a:hover {
+        background-color: #283593;
+      }
+      .tab-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 10px;
+      }
+      .member {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        align-items: center;
+      }
+      .member img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      .member-info {
+        flex-grow: 1;
+        justify-content: center;
+      }
+      .social-buttons a {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 5px 10px;
+        background-color: #3f51b5;
+        color: white;
+        text-decoration: none;
+        border-radius: 3px;
+        font-size: 0.8em;
+      }
+      .course, .publication {
+        margin-bottom: 15px;
+      }
+      .course a, .publication a {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #3f51b5;
+        color: white;
+        text-decoration: none;
+        border-radius: 3px;
+      }
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .project {
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .project img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .project-info {
+        padding: 15px;
+      }
+      .chatbot {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      .chat-messages {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid #eee;
+        padding: 10px;
+        background-color: white;
+        margin-bottom: 10px;
+      }
+      .chat-input {
+        display: flex;
+      }
+      .chat-input input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
+      .chat-input button {
+        padding: 10px 20px;
+        background-color: #3f51b5;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+        nav ul li {
+          margin: 5px 0;
+        }
+        .member {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .member img {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+        .projects {
+          grid-template-columns: 1fr;
+        }
+      }
+
+
+      #scrollToTopBtn {
+        display: none; /* Hide button by default */
+        position: fixed;
+        bottom: 20px; /* Adjust to desired distance from bottom */
+        right: 20px; /* Adjust to desired distance from right */
+        background-color: #3f51b5; /* Blue background color */
+        color: #fff; /* White text color */
+        border: none;
+        border-radius: 50%; /* Circular shape */
+        width: 50px; /* Adjust button size */
+        height: 50px; /* Adjust button size */
+        padding: 10px;
+        cursor: pointer;
+        z-index: 99; /* Ensure button appears above other content */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+      }
+
+      #scrollToTopBtn svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor; /* Ensures SVG inherits text color */
+      }
+
+      #scrollToTopBtn:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+    </style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>AI &amp; Software Lab</h1>
+    </header>
+    
+    <nav>
+      <ul style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <li><a href="#members">Members</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#chatbot">AI Chatbot</a></li>
+        <li>
+          <button id="toggleTheme" style="background: none; border: none; cursor: pointer; padding: 5px 10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <!-- Notice box -->
+      <div class="notice-box">
+        <strong>Notice:</strong> We are currently accepting applications for research assistants. If you're interested in joining our lab, please check the <a href="/opportunities">opportunities page</a> for more information.
+      </div>
+      <div id="members" class="tab-content">
+    <h2>Members</h2>
+    
+    <h3>Professor</h3>
+    <div class="member" style="margin-left: 20px;">
+      <img src="static/members/jooyoung.JPG" alt="Professor Kim" width="100" height="100">
+      <div class="member-info">
+        <h4>Dr. Jooyoung Kim</h4>
+        <p>Professor of AI and Software Engineering</p>
+        <div class="social-buttons">
+          <a href="https://linkedin.com/in/jinyoungkim">LinkedIn</a>
+          <a href="https://twitter.com/jykim_ai">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <!--
+    <h3>Ph.D. Candidates</h3>
+    <div class="member">
+      <img src="static/photo.png" alt="Soo-yeon Lee" width="100" height="100">
+      <div class="member-info">
+        <h4>Soo-yeon Lee</h4>
+        <p>Researching deep learning applications in natural language processing</p>
+        <div class="social-buttons">
+          <a href="https://linkedin.com/in/sooyeonlee">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    
+    <h3>Master Candidates</h3>
+    <div class="member">
+      <img src="https://placekitten.com/202/202" alt="Min-jae Park" width="100" height="100">
+      <div class="member-info">
+        <h4>Min-jae Park</h4>
+        <p>Focusing on computer vision and image recognition</p>
+        <div class="social-buttons">
+          <a href="https://linkedin.com/in/minjaepark">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    -->  
+    <h3>Undergraduate Students</h3>
+    <div class="member" style="margin-left: 20px;">
+      <img src="static/members/chim.jpeg" alt="Ji-soo Kang" width="100" height="100">
+      <div class="member-info">
+        <h4>Ji-soo Kang</h4>
+        <p>Assisting in machine learning projects</p>
+        <div class="social-buttons">
+          <a href="https://linkedin.com/in/jisookang">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+      
+      <div id="courses" class="tab-content">
+    <h2>Courses</h2>
+    
+    <h3>2024 Spring</h3>
+    <div class="course" style="margin-left: 20px;">
+      <h4><span style="color: #cc0000;">CS-301</span> Introduction to Artificial Intelligence</h4>
+      <a href="/courses/intro-to-ai">View Course</a>
+    </div>
+    <div class="course" style="margin-left: 20px;">
+      <h4><span style="color: #cc0000;">SE-401</span> Software Engineering Principles</h4>
+      <a href="/courses/software-engineering">View Course</a>
+    </div>
+    <!--
+    <h3>2023 Fall</h3>
+    <div class="course" style="margin-left: 20px;">
+      <h4><span style="color: #cc0000;">CS-502</span> Advanced Machine Learning</h4>
+      <a href="/courses/advanced-ml">View Course</a>
+    </div>
+    <div class="course" style="margin-left: 20px;">
+      <h4><span style="color: #cc0000;">CS-405</span> Natural Language Processing</h4>
+      <a href="/courses/nlp">View Course</a>
+    </div>
+    
+    <h3>2023 Spring</h3>
+    <div class="course" style="margin-left: 20px;">
+      <h4><span style="color: #cc0000;">CS-201</span> Data Structures and Algorithms</h4>
+      <a href="/courses/data-structures">View Course</a>
+    </div>
+    <div class="course" style="margin-left: 20px;">
+      <h4><span style="color: #cc0000;">CS-403</span> Computer Vision</h4>
+      <a href="/courses/computer-vision">View Course</a>
+    </div>
+  -->
+  </div>
+      
+      <div id="publications" class="tab-content">
+    <h2>Publications</h2>
+    
+    <h3>Journal Articles</h3>
+    <div class="publication" style="margin-left: 20px;">
+      <h4><span style="color: #0066cc;">International</span> Deep Learning Approaches in Natural Language Processing</h4>
+      <p>Authors: J. Kim, S. Lee</p>
+      <p>Journal of Artificial Intelligence Research, 2023</p>
+      <a href="/publications/deep-learning-nlp">Read Paper</a>
+    </div>
+    <div class="publication" style="margin-left: 20px;">
+      <h4><span style="color: #009933;">Domestic</span> 한국어 자연어 처리를 위한 트랜스포머 모델 개선</h4>
+      <p>Authors: J. Kim, M. Park</p>
+      <p>한국정보과학회논문지, 2022</p>
+      <a href="/publications/korean-nlp-transformer">Read Paper</a>
+    </div>
+  
+    <h3>Conference Proceedings</h3>
+    <div class="publication" style="margin-left: 20px;">
+      <h4><span style="color: #0066cc;">International</span> Advancements in Computer Vision: A Comprehensive Survey</h4>
+      <p>Authors: M. Park, J. Kim</p>
+      <p>Proceedings of the International Conference on Computer Vision (ICCV), 2023</p>
+      <a href="/publications/computer-vision-survey">Read Paper</a>
+    </div>
+    <div class="publication" style="margin-left: 20px;">
+      <h4><span style="color: #009933;">Domestic</span> 딥러닝 기반 영상 분할 기술의 최신 동향</h4>
+      <p>Authors: S. Lee, J. Kim</p>
+      <p>한국컴퓨터종합학술대회 논문집, 2022</p>
+      <a href="/publications/image-segmentation-trends">Read Paper</a>
+    </div>
+  
+    <h3>Patents</h3>
+    <div class="publication" style="margin-left: 20px;">
+      <h4><span style="color: #0066cc;">International</span> Method and System for Real-time Object Detection in Video Streams</h4>
+      <p>Inventors: J. Kim, M. Park</p>
+      <p>US Patent No. 11,234,567, 2023</p>
+      <a href="/patents/realtime-object-detection">View Patent</a>
+    </div>
+    <div class="publication" style="margin-left: 20px;">
+      <h4><span style="color: #009933;">Domestic</span> 다중 언어 감성 분석을 위한 인공지능 시스템</h4>
+      <p>Inventors: J. Kim, S. Lee</p>
+      <p>대한민국 특허 제10-2345678호, 2022</p>
+      <a href="/patents/multilingual-sentiment-analysis">특허 보기</a>
+    </div>
+  </div>
+      
+      <div id="projects" class="tab-content">
+        <h2>Projects</h2>
+        <div class="projects" style="display: flex; overflow-x: auto; padding: 20px 0;">
+    <div class="project" style="flex: 0 0 auto; width: 300px; margin-right: 20px;">
+      <img src="static/projects/12.png" alt="AI Chatbot Project" width="300" height="225">
+      <div class="project-info">
+        <h3>AI Chatbot for Student Services</h3>
+        <p>Developing an intelligent chatbot to assist students with university-related queries.</p>
+      </div>
+    </div>
+    <div class="project" style="flex: 0 0 auto; width: 300px; margin-right: 20px;">
+      <img src="static/projects/12.png" alt="Computer Vision Project" width="300" height="225">
+      <div class="project-info">
+        <h3>Real-time Object Detection System</h3>
+        <p>Creating a system for real-time object detection and tracking using advanced computer vision techniques.</p>
+      </div>
+    </div>
+    <div class="project" style="flex: 0 0 auto; width: 300px; margin-right: 20px;">
+      <img src="static/projects/12.png" alt="NLP Project" width="300" height="225">
+      <div class="project-info">
+        <h3>Multilingual Sentiment Analysis</h3>
+        <p>Developing a robust sentiment analysis model capable of understanding multiple languages.</p>
+      </div>
+    </div>
+    <div class="project" style="flex: 0 0 auto; width: 300px; margin-right: 20px;">
+      <img src="static/projects/12.png" alt="Robotics Project" width="300" height="225">
+      <div class="project-info">
+        <h3>Autonomous Drone Navigation</h3>
+        <p>Designing an AI system for autonomous drone navigation in complex environments.</p>
+      </div>
+    </div>
+    <div class="project" style="flex: 0 0 auto; width: 300px; margin-right: 20px;">
+      <img src="static/projects/12.png" alt="Data Science Project" width="300" height="225">
+      <div class="project-info">
+        <h3>Predictive Maintenance for IoT Devices</h3>
+        <p>Developing machine learning models to predict maintenance needs for IoT devices.</p>
+      </div>
+    </div>
+    <div class="project" style="flex: 0 0 auto; width: 300px;">
+      <img src="static/projects/12.png" alt="AR/VR Project" width="300" height="225">
+      <div class="project-info">
+        <h3>AR-Enhanced Learning Platform</h3>
+        <p>Creating an augmented reality platform to enhance interactive learning experiences.</p>
+      </div>
+    </div>
+  </div>
+      </div>
+      
+      <div id="chatbot" class="tab-content">
+        <h2>AI Chatbot</h2>
+        <div class="chatbot">
+          <div class="chat-messages">
+            <p><strong>AI:</strong> Hello! I'm the AI &amp; Software Lab's assistant. How can I help you today?</p>
+          </div>
+          <div class="chat-input">
+            <input type="text" placeholder="Type your message here...">
+            <button>Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>📍 서울특별시 서대문구 거북골로 34 명지대학교 인문캠퍼스 본관 0000 (우편번호 03674)</p>
+      <p>📞 02-300-0000 ✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59f8c9e9c98b5989f80db9496db9e87">[email&#160;protected]</a></p>
+      <p>Copyright 2024. AI &amp; Software Lab. All rights reserved.</p>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Go to top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M12 2L0 14h7v8h10v-8h7L12 2zm0 3.83L18.17 14H5.83L12 5.83z"/>
+      </svg>
+    </button>
+
+    <script>
+      const toggleButton = document.getElementById('toggleTheme');
+      const body = document.body;
+      let isDarkMode = false;
+    
+      toggleButton.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        if (isDarkMode) {
+          body.style.backgroundColor = '#121212';
+          body.style.color = 'white';
+          document.querySelectorAll('.tab-content').forEach(content => {
+            content.style.backgroundColor = '#1e1e1e';
+            content.style.color = 'white';
+          });
+          document.querySelectorAll('.project').forEach(project => {
+            project.style.backgroundColor = '#2c2c2c';
+          });
+          document.querySelector('.chatbot').style.backgroundColor = '#2c2c2c';
+          document.querySelector('.chat-messages').style.backgroundColor = '#1e1e1e';
+          document.querySelector('.chat-input input').style.backgroundColor = '#3c3c3c';
+          document.querySelector('.chat-input input').style.color = 'white';
+          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+        } else {
+          body.style.backgroundColor = '#f0f0f0';
+          body.style.color = 'black';
+          document.querySelectorAll('.tab-content').forEach(content => {
+            content.style.backgroundColor = 'white';
+            content.style.color = 'black';
+          });
+          document.querySelectorAll('.project').forEach(project => {
+            project.style.backgroundColor = 'white';
+          });
+          document.querySelector('.chatbot').style.backgroundColor = '#f9f9f9';
+          document.querySelector('.chat-messages').style.backgroundColor = 'white';
+          document.querySelector('.chat-input input').style.backgroundColor = 'white';
+          document.querySelector('.chat-input input').style.color = 'black';
+          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        }
+      });
+    document.addEventListener("DOMContentLoaded", function() {
+      const navLinks = document.querySelectorAll('nav ul li a');
+  
+      navLinks.forEach(function(navLink) {
+        navLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1); // remove the # from href
+          const targetElement = document.getElementById(targetId);
+  
+          if (targetElement) {
+            // Smooth scroll to the target element
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    });
+
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.display = "block";
+      } else {
+        scrollToTopBtn.style.display = "none";
+      }
+    }
+
+    // Smooth scroll to top functionality
+    scrollToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+      // Optional: Smooth scrolling behavior
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+    </script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+</body>
+</html>
