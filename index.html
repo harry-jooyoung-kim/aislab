@@ -172,8 +172,8 @@
       }
       @media (max-width: 768px) {
         nav ul {
-          flex-direction: column;
-          align-items: center;
+          flex-direction: column; /* Switch to a column layout */
+          align-items: center; /* Center align items */
         }
         nav ul li {
           margin: 5px 0;
@@ -188,7 +188,10 @@
           margin-bottom: 10px;
         }
         .projects {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr; /* Ensure projects display in a single column */
+        }
+        body {
+          overflow-x: hidden; /* Ensure horizontal scrolling is disabled */
         }
       }
 
