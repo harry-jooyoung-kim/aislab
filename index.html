@@ -57,6 +57,8 @@
         padding: 0;
         margin: 0;
         display: flex;
+        flex-direction: row;
+        align-items: center;
         justify-content: center;
       }
       nav ul li {
@@ -199,17 +201,14 @@
         background-color: #0056b3; /* Darker blue on hover */
       }
 
-      @media (max-width: 2228px) {
-                nav ul {
-            flex-direction: column; /* Stack items vertically */
-            align-items: stretch; /* Stretch items to full width */
-            padding: 0; /* Remove default padding */
-          }
-          nav ul li {
-            margin: 5px 0; /* Adjust margin for vertical spacing */
-            width: 100%; /* Ensure full width */
-            text-align: center; /* Center align text */
-          }
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+        nav ul li {
+          margin: 5px 0;
+        }
         .member {
           flex-direction: column;
           align-items: center;
@@ -221,9 +220,6 @@
         }
         .projects {
           grid-template-columns: 1fr; /* Ensure projects display in a single column */
-        }
-        body {
-          overflow-x: hidden; /* Ensure horizontal scrolling is disabled */
         }
       }
 
@@ -239,7 +235,7 @@
     </header>
     
     <nav>
-      <ul style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+      <ul>
         <li><a href="#members">Members</a></li>
         <li><a href="#courses">Courses</a></li>
         <li><a href="#publications">Publications</a></li>
@@ -458,7 +454,7 @@
     </div>
     
     <footer>
-      <p>📍 서울특별시 서대문구 거북골로 34 명지대학교 인문캠퍼스 본관 0000 (우편번호 03674)</p>
+      <p>📍 서울특별시 서대문구 거북골로 34 명지대학교 인문캠퍼스 본관 0000</p>
       <p>📞 02-300-0000 </p>
       <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59f8c9e9c98b5989f80db9496db9e87">[email&#160;protected]</a></p>
       <p>Copyright 2024. AI &amp; Software Lab. All rights reserved.</p>
