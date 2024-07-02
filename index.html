@@ -33,23 +33,23 @@
     }
 
         footer {
-            background-color: #1a237e;
-            color: white;
+            color: #1a237e;
+            background-color: white;
             text-align: center;
             padding: 20px 0;
       }
       header {
-        background-color: #1a237e;
-        color: white;
+        color: #1a237e;
+        background-color: white;
         padding: 20px 0;
         text-align: center;
       }
       h1 {
         margin: 0;
-        font-size: 2em;
+        font-size: 1.5em;
       }
       nav {
-        background-color: #3f51b5;
+        background-color: white;
         padding: 10px 0;
       }
       nav ul {
@@ -65,7 +65,7 @@
         margin: 0 10px;
       }
       nav ul li a {
-        color: white;
+        color: #3f51b5;
         text-decoration: none;
         font-weight: bold;
         font-size: 1em;
@@ -74,7 +74,7 @@
         transition: background-color 0.3s;
       }
       nav ul li a:hover {
-        background-color: #283593;
+        background-color: whitesmoke;
       }
       .tab-content {
         background-color: white;
@@ -243,7 +243,7 @@
         <li><a href="#chatbot">Chatbot</a></li>
         <li>
           <button id="toggleTheme" style="background: none; border: none; cursor: pointer; padding: 5px 10px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
@@ -254,7 +254,7 @@
     <div class="container">
       <!-- Notice box -->
       <div class="notice-box">
-        <strong>Notice:</strong> We are currently accepting applications for research assistants. If you're interested in joining our lab, please check the <a href="/opportunities">opportunities page</a> for more information.
+        <strong>Notice:</strong> AI 기술을 적용한 응용 소프트웨어 개발에 관심이 있는 대학원생/학부 연구생 을 모집 중 입니다. 간단한 자기소개 혹은 이력서와 함께 abc@mju.ac.kr 로 메일 주세요.
       </div>
       <div id="members" class="tab-content">
     <h2>Members</h2>
@@ -267,7 +267,8 @@
         <p>Professor of AI and Software Engineering</p>
         <div class="social-buttons">
           <a href="https://linkedin.com/in/jinyoungkim">LinkedIn</a>
-          <a href="https://twitter.com/jykim_ai">Twitter</a>
+          <a href="https://twitter.com/jykim_ai">Google Scholar</a>
+          <a href="https://twitter.com/jykim_ai">CV</a>
         </div>
       </div>
     </div>
@@ -387,7 +388,7 @@
       <h4><span style="color: #009933;">Domestic</span> 다중 언어 감성 분석을 위한 인공지능 시스템</h4>
       <p>Inventors: J. Kim, S. Lee</p>
       <p>대한민국 특허 제10-2345678호, 2022</p>
-      <a href="/patents/multilingual-sentiment-analysis">특허 보기</a>
+      <a href="/patents/multilingual-sentiment-analysis">View Patent</a>
     </div>
   </div>
       
@@ -456,7 +457,7 @@
     <footer>
       <p>📍 서울특별시 서대문구 거북골로 34 명지대학교 인문캠퍼스 본관 0000</p>
       <p>📞 02-300-0000 </p>
-      <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59f8c9e9c98b5989f80db9496db9e87">[email&#160;protected]</a></p>
+      <p>✉️ abc@mju.ac.kr</p>
       <p>Copyright 2024. AI &amp; Software Lab. All rights reserved.</p>
     </footer>
 
@@ -487,7 +488,7 @@
           document.querySelector('.chat-messages').style.backgroundColor = '#1e1e1e';
           document.querySelector('.chat-input input').style.backgroundColor = '#3c3c3c';
           document.querySelector('.chat-input input').style.color = 'white';
-          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
         } else {
           body.style.backgroundColor = '#f0f0f0';
           body.style.color = 'black';
@@ -502,7 +503,7 @@
           document.querySelector('.chat-messages').style.backgroundColor = 'white';
           document.querySelector('.chat-input input').style.backgroundColor = 'white';
           document.querySelector('.chat-input input').style.color = 'black';
-          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
         }
       });
     document.addEventListener("DOMContentLoaded", function() {
