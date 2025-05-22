@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>AI &amp; Software Lab</title>
+    <title>AI &amp; Applications Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <style>
@@ -231,7 +231,7 @@
   </head>
   <body>
     <header>
-      <h1>AI &amp; Software Lab</h1>
+      <h1>AI &amp; Applications Lab</h1>
     </header>
     
     <nav>
@@ -296,7 +296,40 @@
         </div>
       </div>
     </div>
-    -->  
+    -->
+
+    <h3>Graduate Students</h3>
+    <div class="member" style="margin-left: 20px;">
+      <img src="https://placekitten.com/201/201" alt="John Doe" width="100" height="100">
+      <div class="member-info">
+        <h4>John Doe</h4>
+        <p>Researching natural language processing</p>
+        <div class="social-buttons">
+          <a href="https://example.com">Homepage</a>
+        </div>
+      </div>
+    </div>
+    <div class="member" style="margin-left: 20px;">
+      <img src="https://placekitten.com/202/202" alt="Jane Smith" width="100" height="100">
+      <div class="member-info">
+        <h4>Jane Smith</h4>
+        <p>Focusing on computer vision</p>
+        <div class="social-buttons">
+          <a href="https://example.com">Homepage</a>
+        </div>
+      </div>
+    </div>
+    <div class="member" style="margin-left: 20px;">
+      <img src="https://placekitten.com/203/203" alt="Michael Lee" width="100" height="100">
+      <div class="member-info">
+        <h4>Michael Lee</h4>
+        <p>Exploring intelligent robotics</p>
+        <div class="social-buttons">
+          <a href="https://example.com">Homepage</a>
+        </div>
+      </div>
+    </div>
+
     <h3>Undergraduate Students</h3>
     <div class="member" style="margin-left: 20px;">
       <img src="static/members/chim.jpeg" alt="Ji-soo Kang" width="100" height="100">
@@ -444,7 +477,7 @@
         <h2>AI Chatbot</h2>
         <div class="chatbot">
           <div class="chat-messages">
-            <p><strong>AI:</strong> Hello! I'm the AI &amp; Software Lab's assistant. How can I help you today?</p>
+            <p><strong>AI:</strong> Hello! I'm the AI &amp; Applications Lab's assistant. How can I help you today?</p>
           </div>
           <div class="chat-input">
             <input type="text" placeholder="Type your message here...">
@@ -459,7 +492,7 @@
       <p>📍 서울특별시 서대문구 거북골로 34 명지대학교 인문캠퍼스 본관 0000</p>
       <p>📞 02-300-0000 </p>
       <p>✉️ abc@mju.ac.kr</p>
-      <p>Copyright 2024. AI &amp; Software Lab. All rights reserved.</p>
+      <p>Copyright 2024. AI &amp; Applications Lab. All rights reserved.</p>
     </footer>
 
     <button id="scrollToTopBtn" title="Go to top">
@@ -471,13 +504,27 @@
     <script>
       const toggleButton = document.getElementById('toggleTheme');
       const body = document.body;
+      const header = document.querySelector('header');
+      const nav = document.querySelector('nav');
+      const footer = document.querySelector('footer');
+      const noticeBox = document.querySelector('.notice-box');
       let isDarkMode = false;
-    
+
       toggleButton.addEventListener('click', () => {
         isDarkMode = !isDarkMode;
         if (isDarkMode) {
           body.style.backgroundColor = '#121212';
           body.style.color = 'white';
+          header.style.backgroundColor = '#1e1e1e';
+          header.style.color = 'white';
+          nav.style.backgroundColor = '#1e1e1e';
+          nav.querySelectorAll('a').forEach(a => a.style.color = '#bb86fc');
+          footer.style.backgroundColor = '#1e1e1e';
+          footer.style.color = 'white';
+          if (noticeBox) {
+            noticeBox.style.backgroundColor = '#333333';
+            noticeBox.style.color = '#ffffff';
+          }
           document.querySelectorAll('.tab-content').forEach(content => {
             content.style.backgroundColor = '#1e1e1e';
             content.style.color = 'white';
@@ -493,6 +540,16 @@
         } else {
           body.style.backgroundColor = '#f0f0f0';
           body.style.color = 'black';
+          header.style.backgroundColor = 'white';
+          header.style.color = '#1a237e';
+          nav.style.backgroundColor = 'white';
+          nav.querySelectorAll('a').forEach(a => a.style.color = '#3f51b5');
+          footer.style.backgroundColor = 'white';
+          footer.style.color = '#1a237e';
+          if (noticeBox) {
+            noticeBox.style.backgroundColor = '#e0f7fa';
+            noticeBox.style.color = '#0066cc';
+          }
           document.querySelectorAll('.tab-content').forEach(content => {
             content.style.backgroundColor = 'white';
             content.style.color = 'black';
