@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>AI &amp; Software Lab</title>
+    <title>AI &amp; Applications Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <style>
@@ -96,6 +96,19 @@
         object-fit: cover;
         border-radius: 50%;
         margin-right: 20px;
+      }
+
+      /* Sparkle effect for professor profile image */
+      .professor-pic {
+        transition: filter 0.3s, box-shadow 0.3s;
+      }
+      .professor-pic:hover {
+        filter: brightness(1.2);
+        animation: sparkle 0.8s infinite alternate;
+      }
+      @keyframes sparkle {
+        from { box-shadow: 0 0 5px gold; }
+        to { box-shadow: 0 0 15px gold; }
       }
       .member-info {
         flex-grow: 1;
@@ -224,6 +237,29 @@
       }
 
 
+      /* Contact form styles */
+      #contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      #contactForm input,
+      #contactForm textarea {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      #contactForm button {
+        width: 100px;
+        padding: 10px;
+        background-color: #3f51b5;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
     </style>
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -231,7 +267,7 @@
   </head>
   <body>
     <header>
-      <h1>AI &amp; Software Lab</h1>
+      <h1>AI &amp; Applications Lab</h1>
     </header>
     
     <nav>
@@ -261,14 +297,14 @@
     
     <h3>Professor</h3>
     <div class="member" style="margin-left: 20px;">
-      <img src="static/members/jooyoung.JPG" alt="Professor Kim" width="100" height="100">
+      <img src="static/members/jooyoung.JPG" alt="Professor Kim" class="professor-pic" width="100" height="100">
       <div class="member-info">
         <h4>Dr. Jooyoung Kim</h4>
         <p>Professor of AI and Software Engineering</p>
         <div class="social-buttons">
           <a href="https://linkedin.com/in/jinyoungkim">LinkedIn</a>
-          <a href="https://twitter.com/jykim_ai">Google Scholar</a>
-          <a href="https://twitter.com/jykim_ai">CV</a>
+          <a href="https://scholar.google.com/citations?user=jykim">Google Scholar</a>
+          <a href="/static/jooyoung_kim_cv.pdf">CV</a>
         </div>
       </div>
     </div>
@@ -296,7 +332,40 @@
         </div>
       </div>
     </div>
-    -->  
+    -->
+
+    <h3>Graduate Students</h3>
+    <div class="member" style="margin-left: 20px;">
+      <img src="https://placekitten.com/201/201" alt="John Doe" width="100" height="100">
+      <div class="member-info">
+        <h4>John Doe</h4>
+        <p>Researching natural language processing</p>
+        <div class="social-buttons">
+          <a href="https://example.com">Homepage</a>
+        </div>
+      </div>
+    </div>
+    <div class="member" style="margin-left: 20px;">
+      <img src="https://placekitten.com/202/202" alt="Jane Smith" width="100" height="100">
+      <div class="member-info">
+        <h4>Jane Smith</h4>
+        <p>Focusing on computer vision</p>
+        <div class="social-buttons">
+          <a href="https://example.com">Homepage</a>
+        </div>
+      </div>
+    </div>
+    <div class="member" style="margin-left: 20px;">
+      <img src="https://placekitten.com/203/203" alt="Michael Lee" width="100" height="100">
+      <div class="member-info">
+        <h4>Michael Lee</h4>
+        <p>Exploring intelligent robotics</p>
+        <div class="social-buttons">
+          <a href="https://example.com">Homepage</a>
+        </div>
+      </div>
+    </div>
+
     <h3>Undergraduate Students</h3>
     <div class="member" style="margin-left: 20px;">
       <img src="static/members/chim.jpeg" alt="Ji-soo Kang" width="100" height="100">
@@ -444,7 +513,7 @@
         <h2>AI Chatbot</h2>
         <div class="chatbot">
           <div class="chat-messages">
-            <p><strong>AI:</strong> Hello! I'm the AI &amp; Software Lab's assistant. How can I help you today?</p>
+            <p><strong>AI:</strong> Hello! I'm the AI &amp; Applications Lab's assistant. How can I help you today?</p>
           </div>
           <div class="chat-input">
             <input type="text" placeholder="Type your message here...">
@@ -454,12 +523,25 @@
       </div>
     -->
     </div>
-    
+
+    <div id="contact" class="tab-content">
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <label for="author">작성자:</label>
+        <input type="text" id="author" name="author" required>
+        <label for="subject">제목:</label>
+        <input type="text" id="subject" name="subject" required>
+        <label for="message">이메일 내용:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">전송</button>
+      </form>
+    </div>
+
     <footer>
       <p>📍 서울특별시 서대문구 거북골로 34 명지대학교 인문캠퍼스 본관 0000</p>
       <p>📞 02-300-0000 </p>
       <p>✉️ abc@mju.ac.kr</p>
-      <p>Copyright 2024. AI &amp; Software Lab. All rights reserved.</p>
+      <p>Copyright 2024. AI &amp; Applications Lab. All rights reserved.</p>
     </footer>
 
     <button id="scrollToTopBtn" title="Go to top">
@@ -471,58 +553,130 @@
     <script>
       const toggleButton = document.getElementById('toggleTheme');
       const body = document.body;
-      let isDarkMode = false;
-    
+      const header = document.querySelector('header');
+      const nav = document.querySelector('nav');
+      const footer = document.querySelector('footer');
+      const noticeBox = document.querySelector('.notice-box');
+
+      const rainbowThemes = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#8b00ff'];
+      let themeIndex = -1; // -1 indicates light theme
+
+      function applyLightTheme() {
+        body.style.backgroundColor = '#f0f0f0';
+        body.style.color = 'black';
+        header.style.backgroundColor = 'white';
+        header.style.color = '#1a237e';
+        nav.style.backgroundColor = 'white';
+        nav.querySelectorAll('a').forEach(a => a.style.color = '#3f51b5');
+        footer.style.backgroundColor = 'white';
+        footer.style.color = '#1a237e';
+        if (noticeBox) {
+          noticeBox.style.backgroundColor = '#e0f7fa';
+          noticeBox.style.color = '#0066cc';
+        }
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.style.backgroundColor = 'white';
+          content.style.color = 'black';
+        });
+        document.querySelectorAll('.project').forEach(project => {
+          project.style.backgroundColor = '#f0f0f0';
+        });
+        toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+      }
+
+      function lightenColor(color, amount) {
+        const col = color.startsWith('#') ? color.slice(1) : color;
+        let num = parseInt(col, 16);
+        let r = (num >> 16) + amount;
+        r = r > 255 ? 255 : r < 0 ? 0 : r;
+        let g = ((num >> 8) & 0x00ff) + amount;
+        g = g > 255 ? 255 : g < 0 ? 0 : g;
+        let b = (num & 0x0000ff) + amount;
+        b = b > 255 ? 255 : b < 0 ? 0 : b;
+        return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+      }
+
+      function getContrastColor(color) {
+        const col = color.startsWith('#') ? color.slice(1) : color;
+        const r = parseInt(col.substr(0, 2), 16);
+        const g = parseInt(col.substr(2, 2), 16);
+        const b = parseInt(col.substr(4, 2), 16);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness > 150 ? '#000000' : '#ffffff';
+      }
+
+      function applyRainbowTheme(accent) {
+        const bodyBg = lightenColor(accent, 60);
+        const bodyText = getContrastColor(bodyBg);
+        body.style.backgroundColor = bodyBg;
+        body.style.color = bodyText;
+
+        header.style.backgroundColor = accent;
+        header.style.color = getContrastColor(accent);
+
+        nav.style.backgroundColor = accent;
+        const navText = getContrastColor(accent);
+        nav.querySelectorAll('a').forEach(a => a.style.color = navText);
+
+        footer.style.backgroundColor = accent;
+        footer.style.color = getContrastColor(accent);
+
+        if (noticeBox) {
+          const nbBg = lightenColor(accent, 40);
+          noticeBox.style.backgroundColor = nbBg;
+          noticeBox.style.color = getContrastColor(nbBg);
+        }
+
+        document.querySelectorAll('.tab-content').forEach(content => {
+          const tabBg = lightenColor(accent, 40);
+          content.style.backgroundColor = tabBg;
+          content.style.color = getContrastColor(tabBg);
+        });
+
+        document.querySelectorAll('.project').forEach(project => {
+          project.style.backgroundColor = lightenColor(accent, 80);
+        });
+
+        const iconColor = getContrastColor(accent);
+        toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
+      }
+
       toggleButton.addEventListener('click', () => {
-        isDarkMode = !isDarkMode;
-        if (isDarkMode) {
-          body.style.backgroundColor = '#121212';
-          body.style.color = 'white';
-          document.querySelectorAll('.tab-content').forEach(content => {
-            content.style.backgroundColor = '#1e1e1e';
-            content.style.color = 'white';
-          });
-          document.querySelectorAll('.project').forEach(project => {
-            project.style.backgroundColor = '#2c2c2c';
-          });
-          //document.querySelector('.chatbot').style.backgroundColor = '#2c2c2c';
-          //document.querySelector('.chat-messages').style.backgroundColor = '#1e1e1e';
-          //document.querySelector('.chat-input input').style.backgroundColor = '#3c3c3c';
-          //document.querySelector('.chat-input input').style.color = 'white';
-          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+        themeIndex = (themeIndex + 1) % (rainbowThemes.length + 1);
+        if (themeIndex === rainbowThemes.length) {
+          applyLightTheme();
         } else {
-          body.style.backgroundColor = '#f0f0f0';
-          body.style.color = 'black';
-          document.querySelectorAll('.tab-content').forEach(content => {
-            content.style.backgroundColor = 'white';
-            content.style.color = 'black';
-          });
-          document.querySelectorAll('.project').forEach(project => {
-            project.style.backgroundColor = '#f0f0f0';
-          });
-          //document.querySelector('.chatbot').style.backgroundColor = '#f9f9f9';
-          //document.querySelector('.chat-messages').style.backgroundColor = 'white';
-          //document.querySelector('.chat-input input').style.backgroundColor = 'white';
-          //document.querySelector('.chat-input input').style.color = 'black';
-          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+          applyRainbowTheme(rainbowThemes[themeIndex]);
         }
       });
     document.addEventListener("DOMContentLoaded", function() {
       const navLinks = document.querySelectorAll('nav ul li a');
   
-      navLinks.forEach(function(navLink) {
-        navLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1); // remove the # from href
-          const targetElement = document.getElementById(targetId);
-  
-          if (targetElement) {
-            // Smooth scroll to the target element
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
+  navLinks.forEach(function(navLink) {
+    navLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1); // remove the # from href
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Smooth scroll to the target element
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
     });
+  });
+
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const author = document.getElementById('author').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      const body = encodeURIComponent('작성자: ' + author + '\n\n' + message);
+      window.location.href = `mailto:harrykim@mju.ac.kr?subject=${encodeURIComponent(subject)}&body=${body}`;
+    });
+  }
+});
 
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
