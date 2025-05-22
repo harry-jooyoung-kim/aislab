@@ -557,60 +557,62 @@
       const nav = document.querySelector('nav');
       const footer = document.querySelector('footer');
       const noticeBox = document.querySelector('.notice-box');
-      let isDarkMode = false;
+
+      const rainbowThemes = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#8b00ff'];
+      let themeIndex = -1; // -1 indicates light theme
+
+      function applyLightTheme() {
+        body.style.backgroundColor = '#f0f0f0';
+        body.style.color = 'black';
+        header.style.backgroundColor = 'white';
+        header.style.color = '#1a237e';
+        nav.style.backgroundColor = 'white';
+        nav.querySelectorAll('a').forEach(a => a.style.color = '#3f51b5');
+        footer.style.backgroundColor = 'white';
+        footer.style.color = '#1a237e';
+        if (noticeBox) {
+          noticeBox.style.backgroundColor = '#e0f7fa';
+          noticeBox.style.color = '#0066cc';
+        }
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.style.backgroundColor = 'white';
+          content.style.color = 'black';
+        });
+        document.querySelectorAll('.project').forEach(project => {
+          project.style.backgroundColor = '#f0f0f0';
+        });
+        toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+      }
+
+      function applyDarkTheme(accent) {
+        body.style.backgroundColor = '#121212';
+        body.style.color = 'white';
+        header.style.backgroundColor = '#1e1e1e';
+        header.style.color = accent;
+        nav.style.backgroundColor = '#1e1e1e';
+        nav.querySelectorAll('a').forEach(a => a.style.color = accent);
+        footer.style.backgroundColor = '#1e1e1e';
+        footer.style.color = accent;
+        if (noticeBox) {
+          noticeBox.style.backgroundColor = '#333333';
+          noticeBox.style.color = accent;
+        }
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.style.backgroundColor = '#1e1e1e';
+          content.style.color = 'white';
+        });
+        document.querySelectorAll('.project').forEach(project => {
+          project.style.backgroundColor = '#2c2c2c';
+        });
+        toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+      }
 
       toggleButton.addEventListener('click', () => {
-        isDarkMode = !isDarkMode;
-        if (isDarkMode) {
-          body.style.backgroundColor = '#121212';
-          body.style.color = 'white';
-          header.style.backgroundColor = '#1e1e1e';
-          header.style.color = 'white';
-          nav.style.backgroundColor = '#1e1e1e';
-          nav.querySelectorAll('a').forEach(a => a.style.color = '#bb86fc');
-          footer.style.backgroundColor = '#1e1e1e';
-          footer.style.color = 'white';
-          if (noticeBox) {
-            noticeBox.style.backgroundColor = '#333333';
-            noticeBox.style.color = '#ffffff';
-          }
-          document.querySelectorAll('.tab-content').forEach(content => {
-            content.style.backgroundColor = '#1e1e1e';
-            content.style.color = 'white';
-          });
-          document.querySelectorAll('.project').forEach(project => {
-            project.style.backgroundColor = '#2c2c2c';
-          });
-          //document.querySelector('.chatbot').style.backgroundColor = '#2c2c2c';
-          //document.querySelector('.chat-messages').style.backgroundColor = '#1e1e1e';
-          //document.querySelector('.chat-input input').style.backgroundColor = '#3c3c3c';
-          //document.querySelector('.chat-input input').style.color = 'white';
-          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+        themeIndex = (themeIndex + 1) % (rainbowThemes.length + 1);
+        if (themeIndex === rainbowThemes.length) {
+          applyLightTheme();
         } else {
-          body.style.backgroundColor = '#f0f0f0';
-          body.style.color = 'black';
-          header.style.backgroundColor = 'white';
-          header.style.color = '#1a237e';
-          nav.style.backgroundColor = 'white';
-          nav.querySelectorAll('a').forEach(a => a.style.color = '#3f51b5');
-          footer.style.backgroundColor = 'white';
-          footer.style.color = '#1a237e';
-          if (noticeBox) {
-            noticeBox.style.backgroundColor = '#e0f7fa';
-            noticeBox.style.color = '#0066cc';
-          }
-          document.querySelectorAll('.tab-content').forEach(content => {
-            content.style.backgroundColor = 'white';
-            content.style.color = 'black';
-          });
-          document.querySelectorAll('.project').forEach(project => {
-            project.style.backgroundColor = '#f0f0f0';
-          });
-          //document.querySelector('.chatbot').style.backgroundColor = '#f9f9f9';
-          //document.querySelector('.chat-messages').style.backgroundColor = 'white';
-          //document.querySelector('.chat-input input').style.backgroundColor = 'white';
-          //document.querySelector('.chat-input input').style.color = 'black';
-          toggleButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f51b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+          applyDarkTheme(rainbowThemes[themeIndex]);
         }
       });
     document.addEventListener("DOMContentLoaded", function() {
